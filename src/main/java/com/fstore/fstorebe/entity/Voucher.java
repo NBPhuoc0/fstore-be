@@ -2,16 +2,19 @@ package com.fstore.fstorebe.entity;
 
 import com.fstore.fstorebe.enums.VoucherType;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Table(name = "vouchers", indexes = {
+        @Index(name = "idx_vouchers_code", columnList = "code", unique = true),
+})
 public class Voucher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

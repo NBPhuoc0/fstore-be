@@ -1,16 +1,16 @@
 package com.fstore.fstorebe.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "category", uniqueConstraints = {
+@Table(name = "categories", uniqueConstraints = {
         @UniqueConstraint(name = "category_url_handle_unique", columnNames = "urlHandle")
 })
 public class Category {
@@ -36,8 +36,6 @@ public class Category {
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Category> children = new ArrayList<>();
 
-    public Category() {
-    }
 
     public Category(String name, String urlHandle) {
         this.name = name;
@@ -59,6 +57,4 @@ public class Category {
         this.children.remove(child);
         child.setParent(null);
     }
-
-
 }

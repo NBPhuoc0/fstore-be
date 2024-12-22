@@ -1,8 +1,7 @@
 package com.fstore.fstorebe.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -10,10 +9,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "product", indexes = {
+@Table(name = "products", indexes = {
         @Index(name = "idx_unique_code", columnList = "code", unique = true),
         @Index(name = "idx_unique_url_handle", columnList = "urlHandle", unique = true)
 })

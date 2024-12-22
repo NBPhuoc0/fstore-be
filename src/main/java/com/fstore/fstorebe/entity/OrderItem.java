@@ -1,4 +1,5 @@
 package com.fstore.fstorebe.entity;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -6,24 +7,25 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "product_colors")
-public class ProductColor {
+@Table(name = "order_items")
+public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //todo: after add s3
-//    @Column(nullable = false)
-    private String url;
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
-    @Column(nullable = false)
-    private Integer position;
+    @ManyToOne
+    @JoinColumn(name = "variant_id", nullable = false)
+    private Variant variant;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    @ManyToOne
-    @JoinColumn(name = "color_id", nullable = false)
-    private Color color;
+    @Column(nullable = false)
+    private Integer quantity;
+
 }

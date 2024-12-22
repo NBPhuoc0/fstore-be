@@ -2,8 +2,7 @@ package com.fstore.fstorebe.entity;
 
 import com.fstore.fstorebe.enums.PromotionType;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -11,8 +10,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "promotions", indexes = {
         @Index(name = "idx_promotions_code", columnList = "code", unique = true),
